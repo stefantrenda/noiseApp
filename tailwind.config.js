@@ -51,6 +51,11 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        lightGray: "#D9D9D9",
+        limeGreen: "#B3D457",
+        darkBlue: "#373463",
+        deepPurple: "#18162A",
+        veryDeepPurple: "#100F1C",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -70,6 +75,19 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      screens: {
+        mobile: "375px",
+        tablet: "834px",
+        "desktop-sm": "1440px",
+        "desktop-lg": "1920px",
+      },
+      backgroundImage: {
+        "gradient-bg": "linear-gradient(60deg, #18162A 0%, #18162A 100%)",
+         "custom-gradient": "linear-gradient(180deg, #8480AF 0%, #534F77 100%), linear-gradient(0deg, rgba(24, 22, 42, 0.45), rgba(24, 22, 42, 0.45))"
+      },
+      boxShadow: {
+        "custom-shadow": "0px 0px 10px 0px #373463 inset",
       },
     },
   },
