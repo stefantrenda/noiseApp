@@ -13,7 +13,7 @@ const Header = () => {
       </Link>
 
 
-      <div className=" w-1/3 flex justify-between gap-5 px-14">
+      <div className=" w-1/3 flex justify-evenly gap-5 px-14">
         <Link className="w-fit justify-center cursor-pointer flex gap-2.5">
           <div className="flex flex-col gap-1 text-limeGreen">
             <span>Home</span>
