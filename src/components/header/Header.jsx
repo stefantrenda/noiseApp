@@ -4,7 +4,7 @@ import arrowbg from "../../assets/Images/arrowBg.svg"
 
 const Header = () => {
   return (
-    <div className=" flex w-[85%] px-8 mt-4 justify-between items-center bg-gradient-bg h-14 border border-darkBlue rounded-[100px] text-base">
+    <div className=" flex w-[85%] px-8 mt-4 justify-between items-center bg-gradient-bg h-14 border border-darkBlue rounded-[100px] text-base z-10">
 
 
       <Link to={'/'} className="w-1/3 flex gap-3 cursor-pointer">
