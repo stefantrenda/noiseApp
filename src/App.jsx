@@ -15,11 +15,10 @@ function App() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        // zIndex: 1,
       }}
     >
       <div
-        className="absolute top-0 left-0 w-1/2 h-full bg-no-repeat bg-left-bottom"
+        className="absolute top-0 left-0 w-1/2 h-full bg-no-repeat bg-left-top"
         style={{
           backgroundImage: `url(${leftTriangles})`,
           opacity: 0.1,
@@ -27,7 +26,7 @@ function App() {
         }}
       ></div>
       <div
-        className="absolute top-0 right-0 w-1/2 h-full bg-no-repeat bg-right-bottom"
+        className="absolute top-0 right-0 w-1/2 h-full bg-no-repeat bg-right-top"
         style={{
           backgroundImage: `url(${RightTriangles})`,
           opacity: 0.1,

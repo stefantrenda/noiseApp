@@ -1,3 +1,31 @@
+import RainImg from "../../assets/Images/NatrualSounds/Rain.svg";
+import ThunderImg from "../../assets/Images/NatrualSounds/Thunder.svg";
+import WavesImg from "../../assets/Images/NatrualSounds/Waves.svg";
+import WindImg from "../../assets/Images/NatrualSounds/Wind.svg";
+import FireImg from "../../assets/Images/NatrualSounds/Fire.svg";
+import { PiBirdFill } from "react-icons/pi";
+import { GiCricket } from "react-icons/gi";
+import { FaCloudRain, FaHome } from "react-icons/fa";
+import { MdCabin } from "react-icons/md";
+import { GiSplashyStream } from "react-icons/gi";
+import { GiWaterfall } from "react-icons/gi";
+import { FaBugs } from "react-icons/fa6";
+import { FaFrog } from "react-icons/fa";
+
+import CoffeeShop from "../../assets/Images/Ambient/Coffee Shop.svg";
+import iconCity from "../../assets/Images/Ambient/City Ambiance.svg";
+import iconAmbiance from "../../assets/Images/Ambient/City Ambiance.svg";
+import iconFanLow from "../../assets/Images/Ambient/Fan (Low).svg";
+import iconFanHigh from "../../assets/Images/Ambient/Fan (High).svg";
+import iconAirConditioning from "../../assets/Images/Ambient/Air Conditioning.svg";
+
+import iconSingingBowl from "../../assets/Images/Relaxation/Singing Bowl.svg";
+import whiteNoise from "../../assets/Images/Relaxation/White Noise.svg";
+import iconMetal from "../../assets/Images/Relaxation/Metal Chimes.svg";
+import iconBrownBoise from "../../assets/Images/Relaxation/Brown Noise.svg";
+import { GiSoundWaves } from "react-icons/gi";
+import iconRecordPlayer from "../../assets/Images/Relaxation/Record Player.svg";
+
 export const soundGroups = [
   {
     categoryName: "Nature Sounds",
@@ -39,3 +67,33 @@ export const soundGroups = [
     ],
   },
 ];
+
+
+export const iconMapping = {
+  FaDroplet: <img src={RainImg} alt="RainImg" />,
+  iconThunder: <img src={ThunderImg} alt="ThunderImg" />,
+  iconWaves: <img src={WavesImg} alt="WavesImg" />,
+  iconWind: <img src={WindImg} alt="WindImg" />,
+  iconFire: <img src={FireImg} alt="FireImg" />,
+  iconBirds: <PiBirdFill className="w-11 h-11 text-[#D9D9D9]" />,
+  iconCrickets: <GiCricket className="w-11 h-11 text-[#D9D9D9]" />,
+  iconRainOnTrees: <FaCloudRain className="w-11 h-11 text-[#D9D9D9]" />,
+  iconRainOnTin: <FaHome className="w-11 h-11 text-[#D9D9D9]" />,
+  iconCabin: <MdCabin className="w-11 h-11 text-[#D9D9D9]" />,
+  iconStream: <GiSplashyStream className="w-11 h-11 text-[#D9D9D9]" />,
+  iconWaterfall: <GiWaterfall className="w-11 h-11 text-[#D9D9D9]" />,
+  iconCicadas: <FaBugs className="w-11 h-11 text-[#D9D9D9]" />,
+  iconFrogs: <FaFrog className="w-11 h-11 text-[#D9D9D9]" />,
+  iconCoffeeShop: <img src={CoffeeShop} alt="CoffeeShop" />,
+  iconCity: <img src={iconCity} alt="iconCity" />,
+  iconAmbiance: <img src={iconAmbiance} alt="iconAmbiance" />,
+  iconFanLow: <img src={iconFanLow} alt="iconAmbiance" />,
+  iconFanHigh: <img src={iconFanHigh} alt="iconAmbiance" />,
+  iconAirConditioning: <img src={iconAirConditioning} alt="iconAmbiance" />,
+  iconSingingBowl: <img src={iconSingingBowl} alt="iconAmbiance" />,
+  whiteNoise: <img src={whiteNoise} alt="iconAmbiance" />,
+  iconMetal: <img src={iconMetal} alt="iconAmbiance" />,
+  iconBrownBoise: <img src={iconBrownBoise} alt="iconBrownBoise" />,
+  iconPinkNoise: <GiSoundWaves className="w-11 h-11 text-[#D9D9D9]" />,
+  iconRecordPlayer: <img src={iconRecordPlayer} alt="iconBrownBoise" />,
+};

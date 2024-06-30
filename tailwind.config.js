@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
   ],
   prefix: "",
   theme: {
@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Outfit", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -84,7 +87,8 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-bg": "linear-gradient(60deg, #18162A 0%, #18162A 100%)",
-         "custom-gradient": "linear-gradient(180deg, #8480AF 0%, #534F77 100%), linear-gradient(0deg, rgba(24, 22, 42, 0.45), rgba(24, 22, 42, 0.45))"
+        "custom-gradient":
+          "linear-gradient(180deg, #8480AF 0%, #534F77 100%), linear-gradient(0deg, rgba(24, 22, 42, 0.45), rgba(24, 22, 42, 0.45))",
       },
       boxShadow: {
         "custom-shadow": "0px 0px 10px 0px #373463 inset",
@@ -92,4 +96,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
