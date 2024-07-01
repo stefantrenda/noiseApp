@@ -25,22 +25,19 @@ const DialogSave = ({
 }) => {
   const [mixName, setMixName] = useState("");
 
-  // const handleSave = () => {
-  //   if (mixName && selectedSounds.length >= 2 && selectedSounds.length <= 3) {
-  //     onSaveMix(mixName);
-  //     setMixName("");
-  //   } else {
-  //     setShowTooltip(true);
-  //   }
-  // };
+  const handleSave = () => {
+    if (mixName && selectedSounds.length >= 2 && selectedSounds.length <= 3) {
+      onSaveMix(mixName);
+      setMixName("");
+    } else {
+      setShowTooltip(true);
+    }
+  };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          className="font-medium text-veryDeepPurple bg-lightGray rounded-[100px] py-2.5 px-9 self-start h-11"
-          onClick={onSaveMix}
-        >
+        <Button className="font-medium text-veryDeepPurple bg-lightGray rounded-[100px] py-2.5 px-9 self-start h-11">
           Save new mix
         </Button>
       </DialogTrigger>
@@ -63,7 +60,7 @@ const DialogSave = ({
           <DialogClose asChild>
             <Button
               className="font-medium text-veryDeepPurple bg-lightGray rounded-[100px] py-2.5 px-9 self-start h-10 "
-              onClick={onSaveMix}
+              onClick={handleSave}
             >
               Save
             </Button>

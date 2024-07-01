@@ -7,20 +7,54 @@ import { Button } from "@/components/ui/button";
 const Home = () => {
   const [selectedSounds, setSelectedSounds] = useState([]);
   const [savedMixes, setSavedMixes] = useState([]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioPlayers, setAudioPlayers] = useState({});
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [currentlyPlayingMixId, setCurrentlyPlayingMixId] = useState(null);
+
+
+  useEffect(() => {
+    const mixesFromStorage = localStorage.getItem('savedMixes');
+    if (mixesFromStorage) {
+      const loadedMixes = JSON.parse(mixesFromStorage).map(mix => ({
+        ...mix,
+        sounds: mix.sounds.map(sound => ({
+          ...sound,
+          audio: new Audio(sound.src)
+        }))
+      }));
+      setSavedMixes(loadedMixes);
+    }
+  }, []);
+
+  const playMix = (mixId) => {
+    const mix = savedMixes.find(m => m.id === mixId);
+    if (mix) {
+      mix.sounds.forEach(sound => {
+        sound.audio.play();
+      });
+    }
+  };
+
+  const stopMix = (mixId) => {
+    const mix = savedMixes.find(m => m.id === mixId);
+    if (mix) {
+      mix.sounds.forEach(sound => {
+        sound.audio.pause();
+      });
+    }
+  };
+
+
+
 
   const handleSelectSound = (soundName, soundFileUrl, defaultVolume = 0.5) => {
     setSelectedSounds((prev) => {
       const existingIndex = prev.findIndex((sound) => sound.name === soundName);
       if (existingIndex !== -1) {
-        // Sound is already selected, stop and remove it
         prev[existingIndex].audio.pause();
         let newSounds = [...prev];
         newSounds.splice(existingIndex, 1);
         return newSounds;
       } else if (prev.length < 3) {
-        // Add new sound with audio object and default volume
         const newAudio = new Audio(soundFileUrl);
         newAudio.loop = true;
         newAudio.volume = defaultVolume;
@@ -46,47 +80,50 @@ const Home = () => {
     );
   };
 
-  const togglePlayPause = () => {
+  const togglePlayPause = (param) => {
     setIsPlaying(!isPlaying);
     selectedSounds.forEach((sound) => {
       if (!isPlaying) {
         sound.audio.play();
       } else {
         sound.audio.pause();
+      
       }
     });
   };
+  // const togglePlayPause = (param) => {
+  //   setIsPlaying(!isPlaying);
+  //   selectedSounds.forEach((sound) => {
+  //     if (!isPlaying) {
+  //       sound.audio.play();
+  //     } else {
+  //       sound.audio.pause();
+      
+  //     }
+  //   });
+  // };
 
-  const handleSaveMix = () => {
+
+  const handleSaveMix = (mixName) => {
     if (selectedSounds.length > 0) {
       const newMix = {
         id: savedMixes.length + 1,
-        name: `Mix ${savedMixes.length + 1}`,
-        sounds: selectedSounds,
+        name: mixName,
+        sounds: selectedSounds.map(sound => ({
+          name: sound.name,
+          src: sound.audio.src,
+          volume: sound.volume
+        })),
       };
-      setSavedMixes([...savedMixes, newMix]);
-    } 
-      return;
+      const newSavedMixes = [...savedMixes, newMix];
+      setSavedMixes(newSavedMixes);
+      localStorage.setItem('savedMixes', JSON.stringify(newSavedMixes));
+    }
   };
 
-  useEffect(() => {
-    Object.values(audioPlayers).forEach((player) => {
-      if (isPlaying) {
-        player.play();
-      } else {
-        player.pause();
-      }
-    });
-  }, [isPlaying, audioPlayers]);
 
-  useEffect(() => {
-    return () => {
-      Object.values(audioPlayers).forEach((player) => {
-        player.pause();
-        player.src = "";
-      });
-    };
-  }, []);
+
+
 
   return (
     <div className="flex flex-col gap-6 w-[60%] z-10">
@@ -102,7 +139,7 @@ const Home = () => {
       </Button>
       <div className="flex w-full gap-6">
         <Timer />
-        <MyMixes />
+        <MyMixes savedMixes={savedMixes} playMix={playMix} stopMix={stopMix} currentlyPlayingMixId={currentlyPlayingMixId} setCurrentlyPlayingMixId={setCurrentlyPlayingMixId} />
       </div>
     </div>
   );

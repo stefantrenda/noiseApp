@@ -27,8 +27,9 @@ const SoundLibrary = ({
   onSaveMix,
   showTooltip,
   setShowTooltip,
+  setMixName,
+  mixName
 }) => {
-  const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
     let timeout;
