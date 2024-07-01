@@ -12,6 +12,13 @@ import { soundGroups } from "./data";
 import { Slider } from "@/components/ui/slider";
 import { FaDroplet } from "react-icons/fa6";
 import DialogSave from "./DialogSave";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../../components/ui/popover";
+import { Button } from "../../components/ui/button";
+import { useEffect, useState } from "react";
 
 const SoundLibrary = ({
   handleSelectSound,
@@ -21,6 +28,19 @@ const SoundLibrary = ({
   showTooltip,
   setShowTooltip,
 }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    let timeout;
+    if (showTooltip) {
+      timeout = setTimeout(() => {
+        setShowTooltip(false);
+      }, 4000);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [showTooltip, setShowTooltip]);
+
   const isSelected = (soundName) => {
     return selectedSounds.some((sound) => sound.name === soundName);
   };
@@ -40,33 +60,35 @@ const SoundLibrary = ({
           </span>
         </div>
 
-         {/* <Popover open={showTooltip}>
-        <PopoverTrigger asChild>
-          <Button
-            className="font-medium text-veryDeepPurple bg-lightGray rounded-[100px] py-2.5 px-9 self-start h-11"
-            onClick={onSaveMix}
-          >
-            Save new mix
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[225px] bg-[#8480AF]" side="right">
-          <div className="grid gap-4">
-            <div className="space-y-2 ">
-              <p className="mb-0 text-[#18162A] text-base te">
-                Select 2 or 3 sounds, then click Save new mix button to create
-                your custom soundscape.
-              </p>
-            </div>
-          </div>
-        </PopoverContent>
-      </Popover> */}
-
-        <DialogSave
-          onSaveMix={onSaveMix}
-          showTooltip={showTooltip}
-          setShowTooltip={setShowTooltip}
-          selectedSounds={selectedSounds}
-        />
+        {selectedSounds.length >= 2 && selectedSounds.length <= 3 ? (
+          <DialogSave
+            onSaveMix={onSaveMix}
+            showTooltip={showTooltip}
+            setShowTooltip={setShowTooltip}
+            selectedSounds={selectedSounds}
+          />
+        ) : (
+          <Popover open={showTooltip}>
+            <PopoverTrigger asChild>
+              <Button
+                className="font-medium text-veryDeepPurple bg-lightGray rounded-[100px] py-2.5 px-9 self-start h-11"
+                onClick={onSaveMix}
+              >
+                Save new mix
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-[225px] bg-[#8480AF]" side="right">
+              <div className="grid gap-4">
+                <div className="space-y-2 ">
+                  <p className="mb-0 text-[#18162A] text-base te">
+                    Select 2 or 3 sounds, then click Save new mix button to
+                    create your custom soundscape.
+                  </p>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+        )}
       </div>
       <hr className="border-b border-darkBlue" />
       <div className="flex flex-col gap-3 py-9 w-[91%] mx-auto">

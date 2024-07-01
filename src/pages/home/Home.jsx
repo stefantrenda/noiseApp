@@ -4,17 +4,11 @@ import SoundLibrary from "./SoundLibrary";
 import Timer from "./Timer";
 import { Button } from "@/components/ui/button";
 
-
 const Home = () => {
   const [selectedSounds, setSelectedSounds] = useState([]);
-  console.log("Home  selectedSounds", selectedSounds)
   const [savedMixes, setSavedMixes] = useState([]);
-  console.log("Home  savedMixes", savedMixes)
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioPlayers, setAudioPlayers] = useState({});
-  const [showTooltip, setShowTooltip] = useState(false);
-  console.log("Home  showTooltip", showTooltip)
-
 
   const handleSelectSound = (soundName, soundFileUrl, defaultVolume = 0.5) => {
     setSelectedSounds((prev) => {
@@ -64,7 +58,6 @@ const Home = () => {
   };
 
   const handleSaveMix = () => {
-    console.log("Clicked");
     if (selectedSounds.length > 0) {
       const newMix = {
         id: savedMixes.length + 1,
@@ -72,13 +65,9 @@ const Home = () => {
         sounds: selectedSounds,
       };
       setSavedMixes([...savedMixes, newMix]);
-    } else {
-      setShowTooltip(true)
-    }
-
+    } 
+      return;
   };
-
-  
 
   useEffect(() => {
     Object.values(audioPlayers).forEach((player) => {
@@ -106,8 +95,6 @@ const Home = () => {
         selectedSounds={selectedSounds}
         handleVolumeChange={handleVolumeChange}
         onSaveMix={handleSaveMix}
-        showTooltip={showTooltip}
-        setShowTooltip={setShowTooltip}
       />
 
       <Button onClick={togglePlayPause}>

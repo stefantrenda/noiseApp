@@ -23,64 +23,27 @@ const DialogSave = ({
   setShowTooltip,
   selectedSounds,
 }) => {
-  console.log("DialogSave  selectedSounds", selectedSounds);
-  console.log("DialogSave  showTooltip", showTooltip);
   const [mixName, setMixName] = useState("");
 
-  useEffect(() => {
-    let timeout;
-    if (showTooltip) {
-      timeout = setTimeout(() => {
-        setShowTooltip(false);
-      }, 4000);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [showTooltip, setShowTooltip]);
-
-  const handleSave = () => {
-    if (mixName && selectedSounds.length >= 2 && selectedSounds.length <= 3) {
-      onSaveMix(mixName);
-      setMixName("");
-    } else {
-      setShowTooltip(true);
-    }
-  };
+  // const handleSave = () => {
+  //   if (mixName && selectedSounds.length >= 2 && selectedSounds.length <= 3) {
+  //     onSaveMix(mixName);
+  //     setMixName("");
+  //   } else {
+  //     setShowTooltip(true);
+  //   }
+  // };
 
   return (
-    <Dialog
-    // open={selectedSounds.length > 0}
-    >
+    <Dialog>
       <DialogTrigger asChild>
         <Button
           className="font-medium text-veryDeepPurple bg-lightGray rounded-[100px] py-2.5 px-9 self-start h-11"
-        //   onClick={onSaveMix}
+          onClick={onSaveMix}
         >
           Save new mix
         </Button>
       </DialogTrigger>
-
-      {/* <Popover open={showTooltip}>
-        <PopoverTrigger asChild>
-          <Button
-            className="font-medium text-veryDeepPurple bg-lightGray rounded-[100px] py-2.5 px-9 self-start h-11"
-            onClick={onSaveMix}
-          >
-            Save new mix
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[225px] bg-[#8480AF]" side="right">
-          <div className="grid gap-4">
-            <div className="space-y-2 ">
-              <p className="mb-0 text-[#18162A] text-base te">
-                Select 2 or 3 sounds, then click Save new mix button to create
-                your custom soundscape.
-              </p>
-            </div>
-          </div>
-        </PopoverContent>
-      </Popover> */}
-
       <DialogContent className="sm:max-w-xl h-[226px]">
         <DialogHeader className="border-b border-[#373463]">
           <DialogTitle>Save mix</DialogTitle>
