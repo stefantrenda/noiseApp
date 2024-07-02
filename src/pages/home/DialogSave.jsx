@@ -42,7 +42,7 @@ const DialogSave = ({
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-xl h-[226px]">
-        <DialogHeader className="border-b border-[#373463]">
+        <DialogHeader className="border-b border-[#373463]  h-[64px]">
           <DialogTitle>Save mix</DialogTitle>
         </DialogHeader>
         <div className="flex items-center space-x-2 p-6 ">

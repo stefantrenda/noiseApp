@@ -42,7 +42,7 @@ DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 const DialogHeader = ({ className, children, onClose }) => (
   <div className={cn(
-    "relative flex items-center justify-between  h-[64px] px-6 rounded-t-[25px] text-white",
+    "relative flex items-center justify-between  px-6 rounded-t-[25px] text-white",
     className
   )}>
     {children}  
