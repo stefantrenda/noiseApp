@@ -25,14 +25,44 @@ const Home = () => {
     }
   }, []);
 
+  // const playMix = (mixId) => {
+  //   const mix = savedMixes.find(m => m.id === mixId);
+  //   if (mix) {
+  //     mix.sounds.forEach(sound => {
+  //       if (!sound.audio.src) {
+  //         sound.audio = new Audio(sound.src);
+  //       }
+  //       sound.audio.play();
+  //     });
+  //   }
+  // };
+
   const playMix = (mixId) => {
+    // Stop all currently playing sounds
+    selectedSounds.forEach(sound => sound.audio.pause());
+    setSelectedSounds([]);  // Clear all selected sounds
+  
     const mix = savedMixes.find(m => m.id === mixId);
     if (mix) {
       mix.sounds.forEach(sound => {
+        if (!sound.audio.src) {
+          sound.audio = new Audio(sound.src);
+        }
         sound.audio.play();
       });
+      setCurrentlyPlayingMixId(mixId);  // Set this mix as currently playing
     }
   };
+  
+
+  // const stopMix = (mixId) => {
+  //   const mix = savedMixes.find(m => m.id === mixId);
+  //   if (mix) {
+  //     mix.sounds.forEach(sound => {
+  //       sound.audio.pause();
+  //     });
+  //   }
+  // };
 
   const stopMix = (mixId) => {
     const mix = savedMixes.find(m => m.id === mixId);
@@ -40,13 +70,18 @@ const Home = () => {
       mix.sounds.forEach(sound => {
         sound.audio.pause();
       });
+      setCurrentlyPlayingMixId(null);  // Ensure no mix is marked as playing
     }
   };
-
-
-
+  
 
   const handleSelectSound = (soundName, soundFileUrl, defaultVolume = 0.5) => {
+    // Stop the currently playing mix, if any
+    if (currentlyPlayingMixId) {
+      stopMix(currentlyPlayingMixId);
+      setCurrentlyPlayingMixId(null);  // Ensure no mix is marked as playing
+    }
+  
     setSelectedSounds((prev) => {
       const existingIndex = prev.findIndex((sound) => sound.name === soundName);
       if (existingIndex !== -1) {
@@ -59,14 +94,37 @@ const Home = () => {
         newAudio.loop = true;
         newAudio.volume = defaultVolume;
         if (isPlaying) newAudio.play();
-        return [
-          ...prev,
-          { name: soundName, audio: newAudio, volume: defaultVolume },
-        ];
+        return [...prev, { name: soundName, audio: newAudio, volume: defaultVolume }];
       }
       return prev;
     });
   };
+  
+
+
+  // const handleSelectSound = (soundName, soundFileUrl, defaultVolume = 0.5) => {
+
+    
+  //   setSelectedSounds((prev) => {
+  //     const existingIndex = prev.findIndex((sound) => sound.name === soundName);
+  //     if (existingIndex !== -1) {
+  //       prev[existingIndex].audio.pause();
+  //       let newSounds = [...prev];
+  //       newSounds.splice(existingIndex, 1);
+  //       return newSounds;
+  //     } else if (prev.length < 3) {
+  //       const newAudio = new Audio(soundFileUrl);
+  //       newAudio.loop = true;
+  //       newAudio.volume = defaultVolume;
+  //       if (isPlaying) newAudio.play();
+  //       return [
+  //         ...prev,
+  //         { name: soundName, audio: newAudio, volume: defaultVolume },
+  //       ];
+  //     }
+  //     return prev;
+  //   });
+  // };
 
   const handleVolumeChange = (soundName, volume) => {
     setSelectedSounds((prev) =>
@@ -107,12 +165,13 @@ const Home = () => {
   const handleSaveMix = (mixName) => {
     if (selectedSounds.length > 0) {
       const newMix = {
-        id: savedMixes.length + 1,
+        id: Date.now(),
         name: mixName,
         sounds: selectedSounds.map(sound => ({
           name: sound.name,
           src: sound.audio.src,
-          volume: sound.volume
+          volume: sound.volume,
+          audio: new Audio(sound.src)
         })),
       };
       const newSavedMixes = [...savedMixes, newMix];
@@ -134,9 +193,9 @@ const Home = () => {
         onSaveMix={handleSaveMix}
       />
 
-      <Button onClick={togglePlayPause}>
+      {/* <Button onClick={togglePlayPause}>
         {isPlaying ? "Pause" : "Play"} sounds
-      </Button>
+      </Button> */}
       <div className="flex w-full gap-6">
         <Timer />
         <MyMixes savedMixes={savedMixes} playMix={playMix} stopMix={stopMix} currentlyPlayingMixId={currentlyPlayingMixId} setCurrentlyPlayingMixId={setCurrentlyPlayingMixId} />
