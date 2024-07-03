@@ -38,40 +38,44 @@ const DialogMixes = ({
           </DialogTitle>
         </DialogHeader>
         <div className="flex items-center space-x-2 p-7 ">
-          <div className="grid flex-1 gap-2 overflow--scroll">
-            {savedMixes?.map((mix) => (
-              <div
-                key={mix.id}
-                className={`flex w-full  rounded-tr-[8px] rounded-br-[8px] h-16 ${
-                  currentlyPlayingMixId === mix.id
-                    ? "bg-[#2F2C55]"
-                    : "bg-[#201E38]"
-                }`}
-              >
-                <div className="flex justify-evenly items-center w-2/3 border-l-[3px] border-[#D9EAAB]">
-                  <div className="flex justify-center items-center w-1/3">
-                    <img
-                      src={
-                        currentlyPlayingMixId === mix.id ? pauseIcon : playIcon
-                      }
-                      alt={currentlyPlayingMixId === mix.id ? "Pause" : "Play"}
-                      className="w-9 h-9 cursor-pointer"
-                      onClick={() => handlePlayPauseClick(mix.id)}
-                    />
+            <div className=" grid flex-1 gap-2 w-full max-h-[70vh] overflow-y-auto max-h-scrollable">
+              {savedMixes?.map((mix) => (
+                <div
+                  key={mix.id}
+                  className={`flex w-full  rounded-tr-[8px] rounded-br-[8px] h-16 ${
+                    currentlyPlayingMixId === mix.id
+                      ? "bg-[#2F2C55]"
+                      : "bg-[#201E38]"
+                  }`}
+                >
+                  <div className="flex justify-evenly items-center w-2/3 border-l-[3px] border-[#D9EAAB]">
+                    <div className="flex justify-center items-center w-1/3">
+                      <img
+                        src={
+                          currentlyPlayingMixId === mix.id
+                            ? pauseIcon
+                            : playIcon
+                        }
+                        alt={
+                          currentlyPlayingMixId === mix.id ? "Pause" : "Play"
+                        }
+                        className="w-9 h-9 cursor-pointer"
+                        onClick={() => handlePlayPauseClick(mix.id)}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1 py-2 w-2/3">
+                      <p className="mb-0 text-lightGray text-sm">{mix.name}</p>
+                      <p className="mb-0 text-[#8480AF] text-xs">
+                        {mix.sounds.map((s) => s.name).join(", ")}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-1 py-2 w-2/3">
-                    <p className="mb-0 text-lightGray text-sm">{mix.name}</p>
-                    <p className="mb-0 text-[#8480AF] text-xs">
-                      {mix.sounds.map((s) => s.name).join(", ")}
-                    </p>
+                  <div className="flex w-1/3 justify-end items-center pr-4">
+                    <img src={shareIcon} alt="Share" className="w-9 h-9" />
                   </div>
                 </div>
-                <div className="flex w-1/3 justify-end items-center pr-4">
-                  <img src={shareIcon} alt="Share" className="w-9 h-9" />
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
         </div>
       </DialogContent>
     </Dialog>

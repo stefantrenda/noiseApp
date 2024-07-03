@@ -30,7 +30,6 @@ const SoundLibrary = ({
   setMixName,
   mixName,
 }) => {
-  console.log("showTooltip", showTooltip)
   useEffect(() => {
     let timeout;
     if (showTooltip) {
@@ -61,7 +60,9 @@ const SoundLibrary = ({
           </span>
         </div>
 
-        {selectedSounds.length === 2 || selectedSounds.length === 3 ? (
+        {selectedSounds.length === 2 ||
+        selectedSounds.length === 3 ||
+        selectedSounds.length === 1 ? (
           <DialogSave
             onSaveMix={onSaveMix}
             showTooltip={showTooltip}

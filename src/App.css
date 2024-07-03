@@ -1,8 +1,26 @@
 .border-image-source-linear-gradient {
-  border: 1px solid rgba(255, 255, 255, 0.598) ;
+  border: 1px solid rgba(255, 255, 255, 0.598);
   box-shadow: 0px 0px 9px 1px rgba(255, 255, 255, 0.5) !important;
 }
 
 .bigger-arrow {
-  transform: scale(1.5);  
+  transform: scale(1.5);
+}
+
+.max-h-scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.max-h-scrollable::-webkit-scrollbar-track {
+  background: #201e38;
+}
+
+.max-h-scrollable::-webkit-scrollbar-thumb {
+  background-color: #d9eaab;
+  border-radius: 4px;
+  border: 2px solid #201e38;
+}
+
+.custom-button-bg {
+  background: linear-gradient(180deg, #8480af 0%, #534f77 100%);
 }

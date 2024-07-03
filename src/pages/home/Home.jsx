@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import MyMixes from "./MyMixes";
 import SoundLibrary from "./SoundLibrary";
 import Timer from "./Timer";
+import { Toaster, toast } from "sonner";
 
 const Home = () => {
   const [selectedSounds, setSelectedSounds] = useState([]);
@@ -15,7 +16,11 @@ const Home = () => {
         ...mix,
         sounds: mix.sounds.map((sound) => ({
           ...sound,
-          audio: new Audio(sound.src),
+          audio: (() => {
+            const audio = new Audio(sound.src);
+            audio.volume = sound.volume;
+            return audio;
+          })(),
         })),
       }));
       setSavedMixes(loadedMixes);
@@ -31,6 +36,7 @@ const Home = () => {
       mix.sounds.forEach((sound) => {
         if (!sound.audio.src) {
           sound.audio = new Audio(sound.src);
+          sound.audio.volume = sound.volume;
         }
         sound.audio.play();
       });
@@ -106,6 +112,11 @@ const Home = () => {
       const newSavedMixes = [...savedMixes, newMix];
       setSavedMixes(newSavedMixes);
       localStorage.setItem("savedMixes", JSON.stringify(newSavedMixes));
+      toast.info("", {
+        title: "Mixed saved",
+        description:
+          "Your new mix has been successfully saved and can now be found in your list of mixes.",
+      });
     }
   };
 

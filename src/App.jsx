@@ -5,6 +5,8 @@ import RightTriangles from "../src/assets/Images/RightTriagles.svg";
 import bgImage from "../src/assets/Images/BG Dark Gradient.jpg";
 import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
+import { Toaster, toast } from "sonner";
+import { CircleCheck } from 'lucide-react';
 
 function App() {
   return (
@@ -33,6 +35,21 @@ function App() {
           zIndex: 0,
         }}
       ></div>
+      <Toaster
+       toastOptions={{
+        classNames: {
+          toast: 'bg-[#8480AF] border-0',
+          title: 'text-[#18162A] font-bold  flex items-center',
+          description: 'text-[#18162A]',
+          icon: 'flex mb-auto mt-1',
+          
+        },
+      }}
+        icons={{
+          success: <CircleCheck />
+        }}
+      />
+
       <Router>
         <Header />
         <Routes>
