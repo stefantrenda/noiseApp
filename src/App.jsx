@@ -6,12 +6,14 @@ import bgImage from "../src/assets/Images/BG Dark Gradient.jpg";
 import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
 import { Toaster } from "sonner";
-import { CircleCheck } from 'lucide-react';
+import { CircleCheck } from "lucide-react";
+import Footer from "./components/Footer/Fooer";
+import About from "./pages/About/About";
 
 function App() {
   return (
     <div
-      className="w-full min-h-screen flex flex-col items-center text-white relative"
+      className="w-full min-h-screen flex flex-col  items-center text-white relative"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
@@ -36,27 +38,27 @@ function App() {
         }}
       ></div>
       <Toaster
-       toastOptions={{
-        classNames: {
-          toast: 'bg-[#8480AF] border-0',
-          title: 'text-[#18162A] font-bold  flex items-center',
-          description: 'text-[#18162A]',
-          icon: 'flex mb-auto mt-1',
-          
-        },
-      }}
+        toastOptions={{
+          classNames: {
+            toast: "bg-[#8480AF] border-0",
+            title: "text-[#18162A] font-bold  flex items-center",
+            description: "text-[#18162A]",
+            icon: "flex mb-auto mt-1",
+          },
+        }}
         icons={{
-          success: <CircleCheck />
+          success: <CircleCheck />,
         }}
       />
 
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* Further routes can be added here */}
-        </Routes>
-      </Router>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+          <Footer />
+        </Router>
     </div>
   );
 }

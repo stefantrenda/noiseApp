@@ -89,6 +89,7 @@ module.exports = {
         "gradient-bg": "linear-gradient(60deg, #18162A 0%, #18162A 100%)",
         "custom-gradient":
           "linear-gradient(180deg, #8480AF 0%, #534F77 100%), linear-gradient(0deg, rgba(24, 22, 42, 0.45), rgba(24, 22, 42, 0.45))",
+          'gradient-to-r': 'linear-gradient(to right, #8480AF, #534F77)',
       },
       boxShadow: {
         "custom-shadow": "0px 0px 10px 0px #373463 inset",

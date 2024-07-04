@@ -1,7 +1,15 @@
-import settinngsIcon from "../../assets/Images/settings.svg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import playTimer from "../../assets/Images/playTimer.svg";
+import pauseTimer from "../../assets/Images/pauseTimer.svg";
+import TimerWork from "./TiimerWork";
+import BreakWork from "./BreakWork";
+import DialogTimer from "./DialogTimer";
 
 const Timer = () => {
+
   return (
     <div className="w-1/2 flex flex-col bg-deepPurple border border-darkBlue rounded-[25px]">
       <div className="flex items-center justify-between py-6 mx-auto w-[85%]">
@@ -9,23 +17,31 @@ const Timer = () => {
           <span className="text-limeGreen text-2xl">Timer</span>
           <span className="text-lightGray">Stay focused on your tasks</span>
         </div>
-        <img
-          src={settinngsIcon}
-          alt="settinngsIcon"
-          className="cursor-pointer"
-        />
+        <DialogTimer />
       </div>
       <hr className="border-b border-darkBlue" />
-      <div className="flex flex-col items-center  gap-3 justify-start py-6 mx-auto w-[85%] h-[308px]">
-        <Tabs defaultValue="work" className="w-2/3">
-          <TabsList className='bg-[#2F2C55] rounded-full text-[#D9D9D9] flex gap-2.5 w-full'>
-            <TabsTrigger className='bg-[#2F2C55] rounded-full w-full' value="work">Work</TabsTrigger>
-            <TabsTrigger className='bg-[#2F2C55] rounded-full w-full' value="break">Break</TabsTrigger>
+      <div className="flex flex-col items-center  justify-start pt-6 mx-auto w-[85%] h-[308px]">
+        <Tabs defaultValue="work" className="w-2/3 flex flex-col gap-2">
+          <TabsList className="bg-[#2F2C55] rounded-full text-[#D9D9D9] flex gap-2.5 w-full">
+            <TabsTrigger className="bg-[#2F2C55] rounded-full w-full" value="work">
+              Work
+            </TabsTrigger>
+            <TabsTrigger className="bg-[#2F2C55] rounded-full w-full" value="break">
+              Break
+            </TabsTrigger>
           </TabsList>
-          <TabsContent value="work">
-            Make changes to your account here.
+          <TabsContent
+            value="work"
+            className="w-full flex flex-col gap-5 justify-center items-center"
+          >
+            <TimerWork />
           </TabsContent>
-          <TabsContent value="break">Change your break here.</TabsContent>
+          <TabsContent
+            value="break"
+            className="w-full flex flex-col gap-5 justify-center items-center mt-0"
+          >
+            <BreakWork />
+          </TabsContent>
         </Tabs>
       </div>
     </div>
