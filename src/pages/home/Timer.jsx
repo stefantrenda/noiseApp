@@ -1,7 +1,7 @@
 import settinngsIcon from "../../assets/Images/settings.svg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const Timer = ({}) => {
+const Timer = () => {
   return (
     <div className="w-1/2 flex flex-col bg-deepPurple border border-darkBlue rounded-[25px]">
       <div className="flex items-center justify-between py-6 mx-auto w-[85%]">
@@ -16,11 +16,11 @@ const Timer = ({}) => {
         />
       </div>
       <hr className="border-b border-darkBlue" />
-      <div className="flex flex-col items-start gap-3 justify-start py-6 mx-auto w-[85%] h-[308px]">
-        <Tabs defaultValue="work" className="w-[400px]">
-          <TabsList className='bg-[#2F2C55] rounded-full'>
-            <TabsTrigger className='bg-[#2F2C55] rounded-full' value="work">Work</TabsTrigger>
-            <TabsTrigger className='bg-[#2F2C55] rounded-full' value="break">Break</TabsTrigger>
+      <div className="flex flex-col items-center  gap-3 justify-start py-6 mx-auto w-[85%] h-[308px]">
+        <Tabs defaultValue="work" className="w-2/3">
+          <TabsList className='bg-[#2F2C55] rounded-full text-[#D9D9D9] flex gap-2.5 w-full'>
+            <TabsTrigger className='bg-[#2F2C55] rounded-full w-full' value="work">Work</TabsTrigger>
+            <TabsTrigger className='bg-[#2F2C55] rounded-full w-full' value="break">Break</TabsTrigger>
           </TabsList>
           <TabsContent value="work">
             Make changes to your account here.

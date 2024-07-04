@@ -5,7 +5,7 @@ import RightTriangles from "../src/assets/Images/RightTriagles.svg";
 import bgImage from "../src/assets/Images/BG Dark Gradient.jpg";
 import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
-import { Toaster, toast } from "sonner";
+import { Toaster } from "sonner";
 import { CircleCheck } from 'lucide-react';
 
 function App() {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import MyMixes from "./MyMixes";
 import SoundLibrary from "./SoundLibrary";
 import Timer from "./Timer";
-import { Toaster, toast } from "sonner";
+import {  toast } from "sonner";
 
 const Home = () => {
   const [selectedSounds, setSelectedSounds] = useState([]);
