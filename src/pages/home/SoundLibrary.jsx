@@ -106,11 +106,10 @@ const SoundLibrary = ({
                   >
                     <div className="p-2 min-h-[165px]  h-fit rounded-[20px] flex flex-col   items-center">
                       <Card
-                        className={`rounded-[20px] cursor-pointer h-[125px] w-[125px] mb-3 ${
-                          selectedSounds.includes(sound.name)
-                            ? " border-image-source-linear-gradient"
-                            : ""
-                        }`}
+                       className={`rounded-[20px] cursor-pointer h-[125px] w-[125px] mb-3  ${
+                        isSelected(sound.name) ? "border-image-source-linear-gradient" : ""
+                      }`}
+                      
                         onClick={() =>
                           handleSelectSound(sound.name, sound.soundFileUrl)
                         }

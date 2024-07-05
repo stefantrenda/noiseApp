@@ -9,11 +9,12 @@ import { Toaster } from "sonner";
 import { CircleCheck } from "lucide-react";
 import Footer from "./components/Footer/Fooer";
 import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
 
 function App() {
   return (
     <div
-      className="w-full min-h-screen flex flex-col  items-center text-white relative"
+      className="w-full min-h-screen flex flex-col  items-center  text-white relative"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
@@ -56,6 +57,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Home />} />
           </Routes>
           <Footer />
         </Router>

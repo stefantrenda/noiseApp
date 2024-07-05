@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import addIcon from "../../assets/Images/Add.svg";
 import playIcon from "../../assets/Images/Play.svg";
 import pauseIcon from "../../assets/Images/Pause.svg";
-import shareIcon from "../../assets/Images/share.svg";
 import DialogMixes from "./DialogMixes";
+import DialogShareMix from "./DialogShareMix";
 
 const MyMixes = ({
   savedMixes,
@@ -10,6 +11,8 @@ const MyMixes = ({
   stopMix,
   currentlyPlayingMixId,
   setCurrentlyPlayingMixId,
+  handleShareMix,
+  linkShare
 }) => {
   const handlePlayPauseClick = (mixId) => {
     if (currentlyPlayingMixId === mixId) {
@@ -43,11 +46,10 @@ const MyMixes = ({
             {displayedMixes.map((mix) => (
               <div
                 key={mix.id}
-                className={`flex w-full  rounded-tr-[8px] rounded-br-[8px] h-16 ${
-                  currentlyPlayingMixId === mix.id
+                className={`flex w-full  rounded-tr-[8px] rounded-br-[8px] h-16 ${currentlyPlayingMixId === mix.id
                     ? "bg-[#2F2C55]"
                     : "bg-[#201E38]"
-                } `}
+                  } `}
               >
                 <div className="flex justify-evenly items-center w-2/3 border-l-[3px] border-[#D9EAAB]">
                   <div className="flex justify-center items-center w-1/3">
@@ -68,11 +70,12 @@ const MyMixes = ({
                   </div>
                 </div>
                 <div className="flex w-1/3 justify-end items-center pr-4">
-                  <img src={shareIcon} alt="shareIcon" className="w-9 h-9" />
+                 
+                  <DialogShareMix handleShareMix={handleShareMix} mix={mix} linkShare={linkShare} />
                 </div>
               </div>
             ))}
-            {savedMixes.length > 3 && <DialogMixes savedMixes={savedMixes} handlePlayPauseClick={handlePlayPauseClick} currentlyPlayingMixId={currentlyPlayingMixId}  />}
+            {savedMixes.length > 3 && <DialogMixes savedMixes={savedMixes} handlePlayPauseClick={handlePlayPauseClick} currentlyPlayingMixId={currentlyPlayingMixId} />}
           </>
         ) : (
           <div className="rounded-[8px] bg-[#201E38] flex flex-col justify-center items-center gap-4 h-full">

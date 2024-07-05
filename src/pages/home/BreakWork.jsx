@@ -6,12 +6,10 @@ import { Button } from "@/components/ui/button";
 import playTimer from "../../assets/Images/playTimer.svg";
 import pauseTimer from "../../assets/Images/pauseTimer.svg";
 
-const BreakWork = () => {
+const BreakWork = ({ minutes, setMinutes, seconds, setSeconds }) => {
 
     const [play, setPlay] = useState(false);
     const [key, setKey] = useState(0);
-    const [minutes, setMinutes] = useState(5);
-    const [seconds, setSeconds] = useState("00"); 
 
     
     const formatTime = (time) => {
