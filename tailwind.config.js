@@ -81,7 +81,7 @@ module.exports = {
       },
       screens: {
         mobile: "375px",
-        tablet: "834px",
+        tablet: "768px",
         "desktop-sm": "1440px",
         "desktop-lg": "1920px",
       },

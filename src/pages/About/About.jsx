@@ -4,7 +4,7 @@ import personLast from "../../assets/Images/personLast.jfif";
 
 const About = () => {
   return (
-    <div className="flex flex-col gap-6 w-[60%] z-10">
+    <div className="flex flex-col gap-6  w-[85%] lg:w-[60%] z-10">
       <div className="w-full mt-6 bg-deepPurple border border-darkBlue rounded-[25px]">
         <div className="flex items-center justify-between py-6 mx-auto w-[90%]">
           <div className="flex flex-col">
@@ -12,7 +12,7 @@ const About = () => {
           </div>
         </div>
         <hr className="border-b border-darkBlue" />
-        <div className="flex flex-col gap-6 py-9 w-[91%] mx-auto">
+        <div className="flex flex-col gap-6 py-9 w-[90%] mx-auto">
           <div className="flex flex-col gap-2.5">
             <p className="text-[#D9D9D9] font-semibold">Our story</p>
             <div className="flex flex-col gap-5">
@@ -51,18 +51,18 @@ const About = () => {
               here to help you craft your perfect ambiance.
             </p>
           </div>
-          <div className="flex justify-between items-center">
-            <div className="w-[30%]  flex flex-col gap-3">
+          <div className="flex flex-col gap-7 md:gap-0 md:flex-row justify-between items-center">
+            <div className="w-full md:w-[30%]  flex flex-col gap-3">
               <img src={personOne} alt="personOne" className="w-full h-auto aspect-[4/3] rounded-2xl object-cover" />
-              <p className="text-[#D9D9D9]">Antonina Khodzhaeva</p>
+              <p className="text-[#D9D9D9] text-center md:text-start">Antonina Khodzhaeva</p>
             </div>
-            <div className="w-[30%]  flex flex-col gap-3">
+            <div className="w-full md:w-[30%]  flex flex-col gap-3">
               <img src={personTwo} alt="personTwo" className="w-full h-auto aspect-[4/3] rounded-2xl object-cover" />
-              <p className="text-[#D9D9D9]">Tom Harris</p>
+              <p className="text-[#D9D9D9] text-center md:text-start">Tom Harris</p>
             </div>
-            <div className="w-[30%]  flex flex-col gap-3">
+            <div className="w-full md:w-[30%]  flex flex-col gap-3">
               <img src={personLast} alt="personLast" className="w-full h-auto aspect-[4/3] rounded-2xl object-cover" />
-              <p className="text-[#D9D9D9]">Lisa Doe</p>
+              <p className="text-[#D9D9D9] text-center md:text-start">Lisa Doe</p>
             </div>
           </div>
         </div>

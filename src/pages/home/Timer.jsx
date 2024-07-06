@@ -16,7 +16,7 @@ const Timer = () => {
   const [secondsBreak, setSecondsBreak] = useState("00");
 
   return (
-    <div className="w-1/2 flex flex-col bg-deepPurple border border-darkBlue rounded-[25px]">
+    <div className="w-full flex flex-col bg-deepPurple border border-darkBlue rounded-[25px]">
       <div className="flex items-center justify-between py-6 mx-auto w-[85%]">
         <div className="flex flex-col">
           <span className="text-limeGreen text-2xl">Timer</span>

@@ -37,7 +37,7 @@ const DialogSave = ({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="font-medium text-veryDeepPurple bg-lightGray rounded-[100px] py-2.5 px-9 self-start h-11">
+        <Button className="font-medium text-veryDeepPurple bg-lightGray rounded-[100px] py-2.5 px-9 self-start  h-10 tablet:h-11 w-full tablet:w-fit">
           Save new mix
         </Button>
       </DialogTrigger>

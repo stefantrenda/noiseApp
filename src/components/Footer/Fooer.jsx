@@ -6,8 +6,8 @@ import arrowbg from "../../assets/Images/arrowBg.svg";
 
 const Footer = () => {
   return (
-    <div className=" flex w-[85%] px-8  justify-between items-center  h-14  text-base z-10 mt-auto">
-      <span className="text-[#D9D9D9] ">
+    <div className=" flex flex-col-reverse md:flex-row w-[91%] px-8  justify-between items-center  min-h-14 py-3  text-base z-10 mt-auto">
+      <span className="text-[#D9D9D9] text-center">
         © 2024 Noise app. All rights reserved.
       </span>
 

@@ -205,7 +205,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-[60%] z-10 mb-8">
+    <div className="flex flex-col desktop-sm:flex-row  gap-6 w-[85%] z-10 mb-8">
       <SoundLibrary
         handleSelectSound={handleSelectSound}
         selectedSounds={selectedSounds}
@@ -213,7 +213,7 @@ const Home = () => {
         onSaveMix={handleSaveMix}
       />
 
-      <div className="flex w-full gap-6">
+      <div className="flex flex-col w-full desktop-sm:w-1/3 gap-6 mt-6">
         <Timer />
         <MyMixes
           savedMixes={savedMixes}
