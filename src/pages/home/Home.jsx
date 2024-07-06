@@ -117,7 +117,7 @@ const Home = () => {
       await setCurrentlyPlayingMixId(null);
     }
 
-    setSelectedSounds((prev) => {
+     setSelectedSounds((prev) => {
       const existingIndex = prev.findIndex((sound) => sound.name === soundName);
       if (existingIndex !== -1) {
         prev[existingIndex].audio.pause();

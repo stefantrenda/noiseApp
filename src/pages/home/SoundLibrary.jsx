@@ -30,6 +30,17 @@ const SoundLibrary = ({
   setMixName,
   mixName,
 }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     let timeout;
     if (showTooltip) {
@@ -79,7 +90,10 @@ const SoundLibrary = ({
                 Save new mix
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[225px] bg-[#8480AF]" side="right">
+            <PopoverContent
+              className="w-[225px] bg-[#8480AF]"
+              side={isMobile ? "top" : "right"}
+            >
               <div className="grid gap-4">
                 <div className="space-y-2 ">
                   <p className="mb-0 text-[#18162A] text-base ">
@@ -126,15 +140,25 @@ const SoundLibrary = ({
                           </CardContent>
                         </Card>
                         {isSelected(sound.name) && (
-                          <Slider
-                            className="w-[80%]"
-                            value={[getVolumeForSound(sound.name) * 100]}
-                            onValueChange={(values) =>
-                              handleVolumeChange(sound.name, values[0] / 100)
-                            }
-                            min={0}
-                            max={100}
-                          />
+                          // <Slider
+                          //   className="w-[80%]"
+                          //   value={[getVolumeForSound(sound.name) * 100]}
+                          //   onValueChange={(values) =>
+                          //     handleVolumeChange(sound.name, values[0] / 100)
+                          //   }
+                          //   min={0}
+                          //   max={100}
+                          // />
+                          <input
+                          type="range"
+                          className="w-[80%] custom-input-style"
+                          value={getVolumeForSound(sound.name) * 100}
+                          onChange={(e) =>
+                            handleVolumeChange(sound.name, e.target.value / 100)
+                          }
+                          min={0}
+                          max={100}
+                        />
                         )}
                       </div>
                     </CarouselItem>
@@ -176,15 +200,26 @@ const SoundLibrary = ({
                       </CardContent>
                     </Card>
                     {isSelected(sound.name) && (
-                      <Slider
-                        className="w-[80%]"
-                        value={[getVolumeForSound(sound.name) * 100]}
-                        onValueChange={(values) =>
-                          handleVolumeChange(sound.name, values[0] / 100)
-                        }
-                        min={0}
-                        max={100}
-                      />
+                      // <Slider
+                      //   className="w-[80%]"
+                      //   value={[getVolumeForSound(sound.name) * 100]}
+                      //   onValueChange={(values) =>
+                      //     handleVolumeChange(sound.name, values[0] / 100)
+                      //   }
+                      //   min={0}
+                      //   max={100}
+                      // />
+
+                      <input
+                      type="range"
+                      className="w-[80%] custom-input-style"
+                      value={getVolumeForSound(sound.name) * 100}
+                      onChange={(e) =>
+                        handleVolumeChange(sound.name, e.target.value / 100)
+                      }
+                      min={0}
+                      max={100}
+                    />
                     )}
                   </div>
                 ))}
