@@ -78,7 +78,7 @@ const MyMixes = ({
             {savedMixes.length > 3 && <DialogMixes savedMixes={savedMixes} handlePlayPauseClick={handlePlayPauseClick} currentlyPlayingMixId={currentlyPlayingMixId} />}
           </>
         ) : (
-          <div className="rounded-[8px] bg-[#201E38] flex flex-col justify-center items-center gap-4 h-full">
+          <div className="rounded-[8px] bg-[#201E38] flex flex-col justify-center items-center gap-4 h-full w-full">
             <img src={addIcon} alt="addIcon" />
             <div className="w-[50%] text-center flex flex-col justify-center items-center gap-1">
               <p className="text-lightGray text-sm">Add new mixes</p>
