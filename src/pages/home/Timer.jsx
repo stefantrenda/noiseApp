@@ -9,7 +9,7 @@ import BreakWork from "./BreakWork";
 import DialogTimer from "./DialogTimer";
 
 const Timer = () => {
-  const [minutesWork, setMinutesWork] = useState(24);
+  const [minutesWork, setMinutesWork] = useState(25);
   const [secondsWork, setSecondsWork] = useState("00");
 
   const [minutesBreak, setMinutesBreak] = useState(5);
